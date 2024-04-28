@@ -1,5 +1,6 @@
 package com.freemanpivo.insurancechallenge.api.dto;
 
+import com.freemanpivo.insurancechallenge.UnitTest;
 import com.freemanpivo.insurancechallenge.core.domain.Price;
 import com.freemanpivo.insurancechallenge.core.domain.Product;
 import com.freemanpivo.insurancechallenge.core.domain.ProductCandidate;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
+@UnitTest
 class ProductResponseDtoTest {
 
     private final ProductCandidate candidate = new ProductCandidate("Seguro X", "VIDA", BigDecimal.ONE);

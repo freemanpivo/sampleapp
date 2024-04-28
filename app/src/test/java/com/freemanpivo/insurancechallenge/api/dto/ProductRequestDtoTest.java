@@ -1,11 +1,13 @@
 package com.freemanpivo.insurancechallenge.api.dto;
 
+import com.freemanpivo.insurancechallenge.UnitTest;
 import com.freemanpivo.insurancechallenge.core.domain.ProductCandidate;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
+@UnitTest
 class ProductRequestDtoTest {
 
     private final ProductRequestDto validDto = new ProductRequestDto("nome", "VIDA", new BigDecimal("10.00"));

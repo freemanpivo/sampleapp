@@ -1,5 +1,6 @@
 package com.freemanpivo.insurancechallenge.api.exception;
 
+import com.freemanpivo.insurancechallenge.UnitTest;
 import com.freemanpivo.insurancechallenge.core.exception.RequestValidationException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.junit.jupiter.api.Assertions;
@@ -10,6 +11,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 
 import java.util.List;
 
+@UnitTest
 class ApplicationControllerAdviceTest {
     private final ApplicationControllerAdvice handler = new ApplicationControllerAdvice();
 
