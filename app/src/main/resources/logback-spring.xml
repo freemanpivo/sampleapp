@@ -8,7 +8,7 @@
 
             <!--  Se necessário a thread adicionar [%blue(%t)] ao pattern-->
             <Pattern>
-                %black(%d{ISO8601})[%cyan(product-service)]%highlight(%-5level)[%magenta(requestId=%X{requestId})]%yellow(%C{0}): %msg%throwable%n
+                %white(%d{ISO8601})[%cyan(product-service)]%highlight(%-5level)[%magenta(requestId=%X{requestId})]%yellow(%C{0}): %msg%throwable%n
             </Pattern>
         </layout>
     </appender>
