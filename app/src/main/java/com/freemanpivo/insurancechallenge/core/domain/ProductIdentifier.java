@@ -9,6 +9,14 @@ public class ProductIdentifier {
         this.value = fromUUID();
     }
 
+    private ProductIdentifier(String id) {
+        this.value = id;
+    }
+
+    public static ProductIdentifier from(String id) {
+        return new ProductIdentifier(id);
+    }
+
     public String value() { return value; }
 
     private String fromUUID() {
