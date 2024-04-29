@@ -50,7 +50,7 @@ public class DatabaseManipulation implements ProductDatabase {
     @Override
     public void save(Product product) {
         logger.info("start entitity with name [{}] creation...", product.name());
-        final var entity = repository.findById(UUID.fromString(product.id()));
+        final var entity = repository.findByNameIgnoreCase(product.name());
         if (entity.isPresent()) throw new ResourceAlreadyCreatedException(product);
         repository.save(ProductEntity.from(product));
         logger.info("the entity [{}] was successfully created with id {}", product.name(), product.id());
