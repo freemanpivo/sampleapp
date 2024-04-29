@@ -6,6 +6,7 @@ import com.freemanpivo.insurancechallenge.core.domain.ProductCandidate;
 import com.freemanpivo.insurancechallenge.core.domain.ProductIdentifier;
 import com.freemanpivo.insurancechallenge.core.port.in.CreateProduct;
 import com.freemanpivo.insurancechallenge.core.port.in.UpdateProduct;
+import com.freemanpivo.insurancechallenge.core.port.out.ProductDatabase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductService implements CreateProduct, UpdateProduct {
     private static final Logger logger = LoggerFactory.getLogger(ProductCandidate.class);
+    private final ProductDatabase database;
+
+    public ProductService(ProductDatabase database) {
+        this.database = database;
+    }
+
     @Override
     public Product create(ProductCandidate sample) {
         logger.info("Creating product with name [{}] ...", sample.name());
@@ -21,7 +28,7 @@ public class ProductService implements CreateProduct, UpdateProduct {
         final var product = Product.create(sample, price, identifier);
         logger.info("Product with name [{}] was successfully created with id={}", sample.name(), identifier.value());
 
-        // TODO: Call repository!
+        database.save(product);
 
         return product;
     }
