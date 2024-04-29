@@ -2,8 +2,8 @@ package com.freemanpivo.insurancechallenge.api.controller;
 
 import com.freemanpivo.insurancechallenge.api.dto.ProductRequestDto;
 import com.freemanpivo.insurancechallenge.api.dto.ProductResponseDto;
-import com.freemanpivo.insurancechallenge.core.port.CreateProduct;
-import com.freemanpivo.insurancechallenge.core.port.UpdateProduct;
+import com.freemanpivo.insurancechallenge.core.port.in.CreateProduct;
+import com.freemanpivo.insurancechallenge.core.port.in.UpdateProduct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;

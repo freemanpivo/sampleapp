@@ -1,4 +1,4 @@
-package com.freemanpivo.insurancechallenge.core.port;
+package com.freemanpivo.insurancechallenge.core.port.in;
 
 import com.freemanpivo.insurancechallenge.core.domain.Product;
 import com.freemanpivo.insurancechallenge.core.domain.ProductCandidate;
