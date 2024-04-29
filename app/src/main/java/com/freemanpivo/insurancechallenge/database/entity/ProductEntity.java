@@ -19,6 +19,13 @@ public class ProductEntity implements Serializable {
     @Column(nullable = false) private BigDecimal chargedPrice;
 
     public ProductEntity() {}
+    public ProductEntity(UUID id, String name, String category, BigDecimal basePrice, BigDecimal chargedPrice) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.basePrice = basePrice;
+        this.chargedPrice = chargedPrice;
+    }
 
     public static Product to(ProductEntity entity) {
         final var sample = new ProductCandidate(entity.getName(), entity.getCategory(), entity.getBasePrice());
