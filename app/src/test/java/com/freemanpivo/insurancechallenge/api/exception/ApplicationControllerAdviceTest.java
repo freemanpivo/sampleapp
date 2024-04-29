@@ -22,7 +22,7 @@ class ApplicationControllerAdviceTest {
 
         final var expectedProblem = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
         expectedProblem.setTitle("The request body sent is wrong");
-        expectedProblem.setDetail(exception.getMessage());
+        expectedProblem.setDetail(exception.message());
         expectedProblem.setProperty("messages", exception.issues());
 
         Assertions.assertEquals(expectedProblem, handler.handleRequestValidation(request, exception));
