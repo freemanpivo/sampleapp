@@ -4,6 +4,7 @@ import com.freemanpivo.insurancechallenge.core.commom.ValidationIssue;
 import com.freemanpivo.insurancechallenge.core.exception.RequestValidationException;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 public class ProductIdentifier {
@@ -32,6 +33,16 @@ public class ProductIdentifier {
     }
 
     public String value() { return value; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ProductIdentifier that = (ProductIdentifier) o;
+
+        return Objects.equals(value, that.value);
+    }
 
     private String fromUUID() {
         // TODO: Can be improved verifying the database!
