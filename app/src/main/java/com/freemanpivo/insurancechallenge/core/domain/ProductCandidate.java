@@ -36,7 +36,6 @@ public class ProductCandidate {
 
         this.name = name.trim();
         this.category = Category.from(category.trim().toUpperCase(Locale.ROOT));
-        if (this.category==null) throw new RequestValidationException(List.of(), "Malformed or corrupted category in request body");
 
         this.basePrice = basePrice;
     }
