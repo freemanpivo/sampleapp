@@ -28,8 +28,4 @@ public class PriceStrategyToViagem extends PriceComputeOperation implements Char
         return chargedPrice;
     }
 
-    @Override
-    public Category category() {
-        return Category.VIAGEM;
-    }
 }

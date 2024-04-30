@@ -1,10 +1,7 @@
 package com.freemanpivo.insurancechallenge.database.operation;
 
-import com.freemanpivo.insurancechallenge.api.controller.ProductController;
+import com.freemanpivo.insurancechallenge.core.domain.Category;
 import com.freemanpivo.insurancechallenge.core.domain.Product;
-import com.freemanpivo.insurancechallenge.core.exception.ExceptionFlow;
-import com.freemanpivo.insurancechallenge.core.exception.ResourceAlreadyCreatedException;
-import com.freemanpivo.insurancechallenge.core.exception.ResourceNotFoundException;
 import com.freemanpivo.insurancechallenge.core.port.out.ProductDatabase;
 import com.freemanpivo.insurancechallenge.database.entity.ProductEntity;
 import com.freemanpivo.insurancechallenge.database.repository.ProductRepository;
@@ -26,9 +23,9 @@ public class DatabaseManipulation implements ProductDatabase {
     }
 
     @Override
-    public Optional<Product> findByName(String name) {
+    public Optional<Product> findByNameAndCategory(String name, Category category) {
         logger.info("querying products table by name...");
-        final var isProduct = repository.findByNameIgnoreCase(name);
+        final var isProduct = repository.findByNameIgnoreCaseAndCategory(name, category.name());
         if (isProduct.isEmpty()) return Optional.empty();
         final var product = ProductEntity.to(isProduct.get());
         logger.info("end querying products table by name.");
@@ -49,19 +46,8 @@ public class DatabaseManipulation implements ProductDatabase {
 
     @Override
     public void save(Product product) {
-        logger.info("start entitity with name [{}] creation...", product.name());
-        final var entity = repository.findByNameIgnoreCase(product.name());
-        if (entity.isPresent()) throw new ResourceAlreadyCreatedException(product);
+        logger.info("start entity with name [{}] creation...", product.name());
         repository.save(ProductEntity.from(product));
         logger.info("the entity [{}] was successfully created with id {}", product.name(), product.id());
-    }
-
-    @Override
-    public void update(Product product) {
-        logger.info("start entitity with name [{}] update...", product.name());
-        final var entity = repository.findById(UUID.fromString(product.id()));
-        if (entity.isEmpty()) throw new ResourceNotFoundException(ExceptionFlow.UPDATE, product.id());
-        repository.save(ProductEntity.from(product));
-        logger.info("the entity [{}] was successfully updated with id {}", product.name(), product.id());
     }
 }

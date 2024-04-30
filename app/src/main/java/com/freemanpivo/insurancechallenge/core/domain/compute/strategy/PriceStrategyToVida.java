@@ -29,8 +29,4 @@ public class PriceStrategyToVida extends PriceComputeOperation implements Charge
         return chargedPrice;
     }
 
-    @Override
-    public Category category() {
-        return Category.VIDA;
-    }
 }

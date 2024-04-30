@@ -7,5 +7,5 @@ import java.math.BigDecimal;
 
 public interface ChargedPriceStrategy {
     BigDecimal compute(Category category, BigDecimal basePrice);
-    Category category();
+
 }

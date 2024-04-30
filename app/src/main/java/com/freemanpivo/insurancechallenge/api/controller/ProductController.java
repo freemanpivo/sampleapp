@@ -33,7 +33,15 @@ public class ProductController {
     }
 
     @PutMapping(name = "updateProduct", value = "/products/{product_id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> update(@PathVariable("product_id") String id) {
-        return ResponseEntity.ok("OK -- TBD");
+    public ResponseEntity<ProductResponseDto> update(
+            @PathVariable("product_id") String id,
+            @RequestBody ProductRequestDto productBody
+    ) {
+        logger.info("start PUT /products/{product_id}...");
+        final var product = productUpdate.update(id, productBody.toProductSample());
+        final var response = ProductResponseDto.from(product);
+        logger.info("end PUT /products/{product_id}.");
+
+        return ResponseEntity.ok(response);
     }
 }

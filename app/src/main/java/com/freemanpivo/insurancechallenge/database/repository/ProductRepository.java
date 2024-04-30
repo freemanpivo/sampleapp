@@ -9,6 +9,6 @@ import java.util.UUID;
 
 @Repository
 public interface ProductRepository extends CrudRepository<ProductEntity, UUID> {
-    Optional<ProductEntity> findByNameIgnoreCase(String name);
+    Optional<ProductEntity> findByNameIgnoreCaseAndCategory(String name, String category);
 
 }

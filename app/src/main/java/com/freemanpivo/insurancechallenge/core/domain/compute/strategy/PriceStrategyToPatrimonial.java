@@ -28,8 +28,4 @@ public class PriceStrategyToPatrimonial extends PriceComputeOperation implements
         return chargedPrice;
     }
 
-    @Override
-    public Category category() {
-        return Category.PATRIMONIAL;
-    }
 }
