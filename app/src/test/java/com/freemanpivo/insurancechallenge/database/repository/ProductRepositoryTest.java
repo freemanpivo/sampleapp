@@ -6,12 +6,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.UUID;
 
 @IntegrationTest
+@ActiveProfiles("integration-test")
 @DataJpaTest
 class ProductRepositoryTest {
 
@@ -39,7 +41,7 @@ class ProductRepositoryTest {
         repository.save(entity);
 
         final var isFound = repository.existsById(id);
-        final var isFoundByName = repository.findByNameIgnoreCase("ProDUto b");
+        final var isFoundByName = repository.findByNameIgnoreCaseAndCategory("ProDUto b", entity.getCategory());
         Assertions.assertTrue(isFound);
         Assertions.assertTrue(isFoundByName.isPresent());
 
