@@ -1,6 +1,8 @@
 package com.freemanpivo.insurancechallenge.core.domain;
 
-import java.util.Locale;
+import com.freemanpivo.insurancechallenge.core.exception.RequestValidationException;
+
+import java.util.List;
 
 public enum Category {
     VIDA, AUTO, VIAGEM, RESIDENCIAL, PATRIMONIAL;
@@ -20,6 +22,6 @@ public enum Category {
             }
         }
 
-        return null;
+        throw new RequestValidationException(List.of(), "Malformed or corrupted category in request body");
     }
 }
