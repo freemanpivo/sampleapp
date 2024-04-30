@@ -28,8 +28,4 @@ public class PriceStrategyToResidencial extends PriceComputeOperation implements
         return chargedPrice;
     }
 
-    @Override
-    public Category category() {
-        return Category.RESIDENCIAL;
-    }
 }
