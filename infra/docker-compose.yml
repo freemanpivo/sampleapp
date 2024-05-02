@@ -22,3 +22,5 @@ services:
     restart: unless-stopped
     volumes:
       - ./grafana/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yaml
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+
